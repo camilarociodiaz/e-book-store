@@ -1,12 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+import AppLoading from 'expo-app-loading';
+import {ShopNavigator} from './navigation/ShopNavigator';
+import { useFonts } from 'expo-font';
+
 export default function App() {
+
+
+  const [loaded] = useFonts({
+    SansLight: require('./assets/fonts/Source-Light.ttf'),
+    SansRegular: require('./assets/fonts/SourceSansPro-Regular.ttf'),
+    SansBold: require('./assets/fonts/SourceSansPro-Bold.ttf'),
+    SansBlack: require('./assets/fonts/SourceSansPro-Black.ttf')
+  })
+
+  if (!loaded) return <AppLoading />
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+      <ShopNavigator />
+
   );
 }
 
@@ -16,5 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+   
   },
+  
 });
