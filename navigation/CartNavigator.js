@@ -12,9 +12,9 @@ const CartNavigator = () => {
             initialRouteName="Cart"
             screenOptions={{
                 headerStyle: {
-                    backgroundColor: Platform.OS === 'android' ? COLORS.primary : '',
+                    backgroundColor: Platform.OS === 'android' ? COLORS.accent : '',
                 },
-                headerTintColor: Platform.OS === 'android' ? 'white' : COLORS.primary,
+                headerTintColor: Platform.OS === 'android' ? 'white' : COLORS.accent,
                 headerTitleStyle: {
                     fontWeight: 'bold',
                 },

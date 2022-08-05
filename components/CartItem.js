@@ -8,7 +8,7 @@ export const CartItem = ({ item, onDelete}) => {
   return (
     <View style={styles.item}>
       <View>
-        <Text style={StyleSheet.header}>{item.name}</Text>
+        <Text style={styles.header}>{item.name}</Text>
       </View>
       <View style={styles.detail}>
         <View>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     },
     header: {
         fontSize: 18,
-        fontFamily: 'OpenSansBold'
+        fontFamily: 'SansBold'
     },
     detail: {
         flex: 1,

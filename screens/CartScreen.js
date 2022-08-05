@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import { CART } from '../data/cart'
+import {COLORS} from '../constants/Colors'
 import {CartItem} from '../components/CartItem';
 import React from 'react'
 
@@ -29,11 +30,12 @@ const CartScreen = () => {
           data={items}
           renderItem={renderItems}
           keyExtractor={item => item.id}
+          
         />
       </View>
       <View style={styles.footer}>
         <TouchableOpacity style={styles.confirm} onPress={handleConfirmCart}>
-          <Text>Confirmar</Text>
+          <Text style={styles.text}>Confirmar</Text>
           <View style={styles.total}>
             <Text style={styles.text}>Total</Text>
             <Text style={styles.text}>${total}</Text>
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
   },
   confirm: {
-    backgroundColor: '#ccc',
+    backgroundColor: COLORS.accent,
     borderRadius: 10,
     padding: 10,
     flexDirection: 'row',
@@ -72,8 +74,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    fontFamily: 'OpenSansBold',
+    fontFamily: 'SansBold',
     padding: 8,
+    color: 'white',
   }
 })
 
