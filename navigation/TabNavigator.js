@@ -22,8 +22,8 @@ export const TabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.item}>
-              <Entypo name="home" size={24} color={focused ? 'blue' : 'black'} />
-              <Text style={{ color: focused ? 'blue' : 'black' }}>Shop</Text>
+              <Entypo name="book" size={24} color={focused ? '#3B758C' : 'black'} />
+              <Text style={{ color: focused ? '#3B758C' : 'black' }}>Shop</Text>
             </View>
           )
         }} />
@@ -35,8 +35,8 @@ export const TabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.item}>
-               <Entypo name="shopping-cart" size={24}  color={focused ? 'blue' : 'black'} />
-              <Text style={{ color: focused ? 'blue' : 'black' }}>Cart</Text>
+               <Entypo name="shopping-cart" size={24}  color={focused ? '#3B758C' : 'black'} />
+              <Text style={{ color: focused ? '#3B758C' : 'black' }}>Cart</Text>
             </View>
           )
         }} />

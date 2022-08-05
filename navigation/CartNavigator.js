@@ -1,5 +1,5 @@
 import { COLORS } from '../constants/Colors';
-import {CartScreen} from '../screens/CartScreen';
+import CartScreen from '../screens/CartScreen';
 import { Platform } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
