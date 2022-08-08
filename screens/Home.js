@@ -1,15 +1,20 @@
-import { FlatList, StyleSheet, View } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { CATEGORIES } from '../data/categories'
 import GridItem from '../components/GridItem'
 import React from 'react'
 import { Searchbar } from 'react-native-paper';
+import { selectCategory } from '../store/actions/category.action'
 import { useState } from 'react'
 
 export const Home = ({ navigation }) => {
+
+    const categories = useSelector(store => store.categories.categories)
+    const dispatch = useDispatch()
+
     const handleSelectedCategory = (item) => {
+        dispatch(selectCategory(item.id))
         navigation.navigate('Products', {
-            categoryID: item.id,
             name: item.title
         });
     }
@@ -24,14 +29,16 @@ export const Home = ({ navigation }) => {
 
     return (
         <View>
+            <Text style={styles.title}> Welcome to the e-book store</Text>
             <Searchbar
-            style={styles.search}
-                placeholder="Search"
+                style={styles.search}
+                placeholder="Search your book"
                 onChangeText={onChangeSearch}
                 value={searchQuery}
             />
+            <Text style={styles.title}> Categories</Text>
             <FlatList
-                data={CATEGORIES}
+                data={categories}
                 renderItem={renderGridItem}
                 keyExtractor={item => item.id}
                 numColumns={2}
@@ -42,9 +49,16 @@ export const Home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     search: {
-      width: '80%',
-      flexDirection: 'row',
-      alignSelf: 'center',
-      margin: 20,
+        width: '80%',
+        flexDirection: 'row',
+        alignSelf: 'center',
+        margin: 15,
+    },
+    title: {
+        alignSelf: 'center',
+        fontFamily: 'SansBold',
+        fontSize: 25,
+        margin: 15,
+
     },
 })

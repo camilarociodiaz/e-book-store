@@ -5,14 +5,17 @@ import React from 'react'
 const BookItem = ({ item, onSelected }) => {
     return (
         <TouchableOpacity onPress={() => onSelected(item)}>
+            <View style={styles.item}>
             <View style={styles.bookItem}>
                 <View>
                     <Text style={styles.name}>{item.name}</Text>
                 </View>
                 <View>
                     <Text style={styles.details}>{item.description}</Text>
-                    <Text style={styles.details}>{item.price}</Text>
+                    <Text style={styles.details}>${item.price}</Text>
+                   <Text>{item.cover}</Text>
                 </View>
+            </View>
             </View>
         </TouchableOpacity>
     )
@@ -23,7 +26,6 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 10,
         borderRadius: 3,
-        backgroundColor: '#ccc',
     },
     name: {
         fontFamily: 'SansBold',
@@ -31,7 +33,13 @@ const styles = StyleSheet.create({
     },
     details: {
         fontSize: 18
-    }
+    },
+    item: {
+        flex: 1,
+        padding: 8,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+    },
 })
 
 export default BookItem
