@@ -1,17 +1,21 @@
 import {StyleSheet, Text, View} from 'react-native'
+import { useDispatch, useSelector } from 'react-redux'
 
+import {Button} from 'react-native';
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { addItem } from '../store/actions/cart.actions'
 
-const BookDetail = () => {
-
+const BookDetail = ({navigation }) => {
+const dispatch = useDispatch();
     const  book = useSelector(store => store.books.selected)
+    const handlerAddItemCart = () => dispatch(addItem(book))
 
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>{book.name}</Text>
             <Text>{book.description} </Text>
             <Text> ${book.price}</Text>
+            <Button title='Add to cart' onPress={handlerAddItemCart}/>
         </View>
     )
 }

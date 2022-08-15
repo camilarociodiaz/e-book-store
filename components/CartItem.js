@@ -13,6 +13,7 @@ export const CartItem = ({ item, onDelete}) => {
       <View style={styles.detail}>
         <View>
         <Text>{item.description}</Text>
+        <Text> Quantity: {item.quantity}</Text>
             <Text>${item.price}</Text>
         </View>
         <TouchableOpacity onPress={() => onDelete(item.id)}>
