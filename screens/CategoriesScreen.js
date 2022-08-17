@@ -1,8 +1,8 @@
+import { FlatList, StyleSheet, View } from 'react-native'
 import { filteredBook, selectBook } from '../store/actions/book.actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 import BookItem from '../components/BookItem'
-import { FlatList } from 'react-native'
 import React from 'react'
 import { useEffect } from 'react'
 
@@ -25,14 +25,27 @@ export const CategoriesScreen = ({ navigation, route }) => {
     }
 
     const renderItemBook = ({ item }) => (
+        <>
         <BookItem item={item} onSelected={handleSelected} />
+        <View style={styles.footer} />
+        </>
     )
     return (
         <>
             <FlatList data={categoryBooks}
                 keyExtractor={item => item.id}
-                renderItem={renderItemBook} />
+                renderItem={renderItemBook}
+                style={{marginTop:50}} />
         </>
     );
 
 }
+
+const styles = StyleSheet.create({
+    footer: {
+        padding: 6,
+        borderTopColor: '#ccc',
+        borderTopWidth: 1,
+      },
+
+})

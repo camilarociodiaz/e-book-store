@@ -4,7 +4,7 @@ import { TabNavigator } from './TabNavigator';
 
 const MainNavigator = () => {
     return (
-        <NavigationContainer initialRouteName="Detail">
+        <NavigationContainer>
             <TabNavigator />
         </NavigationContainer>
     )

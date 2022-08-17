@@ -11,7 +11,10 @@ export default function App() {
     SansLight: require('./assets/fonts/Source-Light.ttf'),
     SansRegular: require('./assets/fonts/SourceSansPro-Regular.ttf'),
     SansBold: require('./assets/fonts/SourceSansPro-Bold.ttf'),
-    SansBlack: require('./assets/fonts/SourceSansPro-Black.ttf')
+    SansBlack: require('./assets/fonts/SourceSansPro-Black.ttf'),
+    SansItalic: require('./assets/fonts/SourceSansPro-Italic.ttf'),
+    SansSemiBold:require('./assets/fonts/SourceSansPro-SemiBold.ttf'),
+    SansBoldItalic: require('./assets/fonts/SourceSansPro-SemiBoldItalic.ttf'),
   })
 
   if (!loaded) return <AppLoading />

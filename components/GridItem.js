@@ -20,24 +20,27 @@ const GridItem = ({ item, onSelected}) => {
 const styles = StyleSheet.create({
     gridItem: {
         flex: 1,
-        margin: 15,
-        height: 100,
-        borderRadius: 6,
+        margin: 8,
+        height: 35,
     },
     container: {
         flex: 1,
-        borderRadius: 6,
+        borderRadius: 15,
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
         padding: 8,
         shadowColor: 'black',
-        shadowOpacity: 0.26,
+        shadowOpacity: 0.2,
         shadowOffset: {width: 0, height: 2},
-        shadowRadius: 6,
-        elevation: 3,
+        shadowRadius: 1,
+        elevation: 1,
     },
     title: {
         fontFamily: 'SansBold',
+        fontSize: 15,
+        color: '#fafafa',
+        paddingLeft: 8,
+        paddingRight: 8,
     }
 })
 

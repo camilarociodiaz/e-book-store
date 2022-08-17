@@ -1,24 +1,37 @@
-export const CATEGORIES = [
+import {COLORS} from '../constants/Colors'
 
+export const CATEGORIES = [
     {
-        id: 1,
-        title: 'Motivation',
-        color: '#C4EAF2',
+        id: 5,
+        title: 'Psychology',
+        color: COLORS.grey,
     },
     {
-        id: 2,
-        title: 'Health',
-        color: '#326A8C',
+        id: 1,
+        title: 'Thriller',
+        color: COLORS.grey,
     },
     {
         id: 3,
-        title: 'science',
-        color: '#3B758C',
+        title: 'Classics',
+        color: COLORS.grey,
     },
+    
+   
     {
         id: 4,
-        title: 'Education',
-        color: '#7AACBF',
+        title: 'Romance',
+        color: COLORS.grey,
     },
 
+    {
+        id: 6,
+        title: 'Travel',
+        color: COLORS.grey,
+    },
+    {
+        id: 2,
+        title: 'Crimes',
+        color: COLORS.grey,
+    },
 ]
