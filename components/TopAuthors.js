@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginTop: 6,
         width: 100,
-        textAlign: 'center',
     },
 
     photo: {
