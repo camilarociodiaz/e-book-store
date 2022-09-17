@@ -1,7 +1,7 @@
 import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 
-import { COLORS } from '../constants/colors'
+import { COLORS } from '../constants/Colors'
 import ImageSelector from '../components/ImageSelector';
 import LocationSelector from '../components/LocationSelector';
 import { addPlace } from '../store/actions/place.actions';
@@ -52,3 +52,4 @@ const styles = StyleSheet.create({
 })
 
 export default NewPlaceScreen
+

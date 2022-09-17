@@ -6,3 +6,5 @@ export const URL_AUTH_SIGIN = 'https://identitytoolkit.googleapis.com/v1/account
 
 
 /* key= AIzaSyCTVkjuPSvkmJIj60-0uiEvNPcqPrTSu0Y */
+
+export const API_MAPS_KEY = 'AIzaSyCyGeQ0XUgO6II5VMqUxQaBt3JjZQN480A'

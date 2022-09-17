@@ -4,6 +4,7 @@ import { COLORS } from '../constants/Colors';
 import CartNavigator from './CartNavigator'
 import { Entypo } from '@expo/vector-icons';
 import OrdersNavigator from './OrdersNavigator';
+import PlaceNavigator from './PlaceNavigator'
 import React from 'react'
 import ShopNavigator from './ShopNavigator'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -56,6 +57,18 @@ export const TabNavigator = () => {
           )
         }}
       />
+      <BottomsTabs.Screen
+            name="Location"
+            component={PlaceNavigator}
+            options={{
+                tabBarIcon: ({focused}) => (
+                    <View style={styles.item}>
+                      <Entypo name="location-pin" size={24} color={focused ? COLORS.black : COLORS.greyAccent} />
+                        <Text style={{ color: focused ? 'blue' : 'black'}}>Location</Text>
+                    </View>
+                )
+            }}
+        />
     </BottomsTabs.Navigator>
   )
 }
