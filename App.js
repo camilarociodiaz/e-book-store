@@ -1,9 +1,17 @@
 import AppLoading from 'expo-app-loading';
 import MainNavigator from './navigation/index';
 import { Provider } from 'react-redux';
+import { init } from './db'
 import store from './store'
 import { useFonts } from 'expo-font';
 
+init()
+  .then(() => console.log('database initialized'))
+  .catch((err) => {
+    console.log('database fail connect')
+    console.log(err.message)
+  })
+  
 export default function App() {
 
 

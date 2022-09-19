@@ -36,7 +36,7 @@ const AuthScreen = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+    
     const dispatch = useDispatch();
     const [formState, formDispatch] = useReducer(formReducer, {
         inputValues: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: 'SansBold',
         marginBottom: 18,
-        textAlign: 'center',
+        textAlign: 'center'
     },
     container: {
         width: '80%',

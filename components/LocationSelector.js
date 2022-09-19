@@ -18,7 +18,7 @@ const LocationSelector = ({onLocation, mapLocation}) => {
         }
 
         const location = await Location.getCurrentPositionAsync({
-            timeout: 5000,
+            timeout: 2000,
         });
 
         setPickedLocation({

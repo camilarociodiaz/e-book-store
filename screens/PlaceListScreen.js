@@ -1,10 +1,14 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import * as addressAction from '../store/actions/place.actions'
+
+import { FlatList, Text } from 'react-native'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import PlaceItem from '../components/PlaceItems'
 
 const PlaceListScreen = ({ navigation }) => {
+
+    const dispatch = useDispatch();
     const places = useSelector(state => state.places.places)
 
     const renderItem = (data) => (
@@ -13,25 +17,31 @@ const PlaceListScreen = ({ navigation }) => {
             title={data?.item.title}
             image={data?.item.image}
             address={data?.item.address}
-            onSelect={() => navigation.navigate('Detalle',
-        {placeID: data.item.id,
-        })}
+            onSelect={() => navigation.navigate('Detalle', {
+                placeID: data.item.id
+            })}
         />
     )
 
+    useEffect(() => {
+        dispatch(addressAction.loadAddress())
+    }, [])
 
     return (
-        <FlatList
-            data={places}
-            renderItem={renderItem}
-            keyExtractor={(item) => Date.now()}
-        />
+        <>
+        { places?.length > 0 ? (
+                <FlatList
+                    data={places}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => Date.now()}
+                />
+            ) : (
+                <Text>No hay lugares</Text>
+            ) 
+        }
+        </>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-})
+
 export default PlaceListScreen

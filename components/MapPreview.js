@@ -4,8 +4,8 @@ import { API_MAPS_KEY } from '../constants/DataBase';
 import React from 'react';
 
 const MapPreview = props => {
-    const mapPreviewUrl = props.location
-        ? `https://maps.googleapis.com/maps/api/staticmap?center=${props.location.lat},${props.location.lng}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${props.location.lat},${props.location.lng}&key=${API_MAPS_KEY}`
+    const mapPreviewUrl = props?.location
+        ? `https://maps.googleapis.com/maps/api/staticmap?center=${props?.location.lat},${props?.location.lng}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${props.location.lat},${props.location.lng}&key=${API_MAPS_KEY}`
         : '';
 
     return (
