@@ -1,4 +1,4 @@
-import { Alert, Button, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { login, signup } from '../store/actions/auth.actions';
 import { useCallback, useReducer, useState } from 'react'
 
@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE';
 
 export const formReducer = (state, action) => {
-    if(action.type === FORM_INPUT_UPDATE) {
+    if (action.type === FORM_INPUT_UPDATE) {
         const inputValues = {
             ...state.inputValues,
             [action.input]: action.value
@@ -19,7 +19,7 @@ export const formReducer = (state, action) => {
         }
         let formIsValid = true;
 
-        for ( const key in inputValidities) {
+        for (const key in inputValidities) {
             formIsValid = formIsValid && inputValidities[key];
         }
 
@@ -32,11 +32,12 @@ export const formReducer = (state, action) => {
     return state
 }
 
+
 const AuthScreen = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+
     const dispatch = useDispatch();
     const [formState, formDispatch] = useReducer(formReducer, {
         inputValues: {
@@ -50,18 +51,18 @@ const AuthScreen = () => {
         formIsValid: false
     })
 
-    const title = 'REGISTRO',
-        message = 'Ya tienes cuenta?',
-        messageAction = 'Ingresar',
+
+    const title = 'Create your ebook store account',
+        messageAction = 'Sign in',
         messageTarget = 'Login';
 
     const handleSignUp = () => {
-        if(formState.formIsValid) {
+        if (formState.formIsValid) {
             dispatch(signup(formState.inputValues.email, formState.inputValues.password));
         } else {
             Alert.alert(
-                'Formulario invalido',
-                'Ingrese email y usuario valido',
+                'Invalid form',
+                'Enter email and valid username',
                 [{ text: 'OK' }]
             )
         }
@@ -81,31 +82,42 @@ const AuthScreen = () => {
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
             style={styles.screen}
         >
+
+            <View style={styles.imageContainer}>
+                <Image
+                    style={styles.stretch}
+                    source={require('../assets/authIcon.png')}
+                />
+            </View>
             <View style={styles.container}>
+
                 <Text style={styles.title}>{title}</Text>
                 <View style={styles.inputContainer}>
                     <Text style={styles.label}>Email</Text>
-                    <TextInput 
+                    <TextInput
                         style={styles.input}
                         keyboardType="email-address"
                         autoCapitalize='none'
                         onChangeText={(text) => setEmail(text)}
                     />
-                    <Text style={styles.label}>Clave</Text>
-                    <TextInput 
+                    <Text style={styles.label}>Password</Text>
+                    <TextInput
                         style={styles.input}
                         secureTextEntry
                         autoCapitalize='none'
                         onChangeText={(text) => setPassword(text)}
                     />
-                    <Button title='Registrame' onPress={handleSignUp} />
                 </View>
                 <View style={styles.prompt}>
-                    <Text style={styles.promptMessage}>{message}</Text> 
+                    <TouchableOpacity onPress={handleSignUp}>
+                        <Text style={styles.promptButton}>{messageTarget}</Text>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => dispatch(login(email, password))}>
                         <Text style={styles.promptButton}>{messageAction}</Text>
                     </TouchableOpacity>
                 </View>
+
+
             </View>
         </KeyboardAvoidingView>
     )
@@ -133,21 +145,18 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgrounColor: 'white',
     },
+ 
     prompt: {
-        alingItems: 'center',
-    },
-    promptMessage: {
-        fontSize: 16,
-        fontFamily: 'SansBold',
-        color: '#333',
+        justifyContent: 'space-evenly',
+        flexDirection: 'row',
+
     },
     promptButton: {
-        fontSize: 16,
+        fontSize: 18,
         fontFamily: 'SansBold',
-        color: COLORS.primary
-    },
-    button: {
-        backgrounColor: COLORS.primary,
+        color: COLORS.accent,
+        
+      
     },
     inputContainer: {
         justifyContent: 'space-around',
@@ -157,6 +166,10 @@ const styles = StyleSheet.create({
         width: '100%',
         borderBottomWidth: 1.5,
         borderColor: 'grey',
+    },
+    imageContainer: {
+        width: 0,
+        height: 20,
     }
 })
 

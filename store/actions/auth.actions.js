@@ -1,4 +1,6 @@
-import { URL_AUTH_SIGIN, URL_AUTH_SIGNUP } from "../../constants/DataBase";
+import { URL_AUTH_SIGNIN, URL_AUTH_SIGNUP } from "../../constants/DataBase";
+
+import { Alert } from "react-native";
 
 export const SIGNUP = 'SIGNUP';
 export const LOGIN = 'LOGIN';
@@ -17,14 +19,20 @@ export const signup = (email, password) => {
             })
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             const errorResponse = await response.json();
             const errorID = errorResponse.error.message;
 
-            let message = 'No se ha podido registrar';
-            if ( errorID === 'EMAIL_EXISTS') message = 'Este email ya esta registrado';
+            let message = 'Failed to register';
+            let messageError2 = '';
+            if (errorID === 'EMAIL-EXISTS') messageError2 = 'This email is already registered';
 
-            console.log(message)
+            console.log(message, messageError2)
+            Alert.alert(
+                message,
+                messageError2,
+                [{ text: 'OK' }]
+            )
         }
 
         const data = await response.json();
@@ -39,7 +47,7 @@ export const signup = (email, password) => {
 
 export const login = (email, password) => {
     return async dispatch => {
-        const response = await fetch(URL_AUTH_SIGIN, {
+        const response = await fetch(URL_AUTH_SIGNIN, {
             method: 'POST',
             header: {
                 'Content-Type': 'application/json'
@@ -51,16 +59,23 @@ export const login = (email, password) => {
             })
         });
 
-        if(!response.ok) {
+        if (!response.ok) {
             const errorResponse = await response.json();
 
             const errorID = errorResponse.error.message;
 
-            let message = 'No se ha podido iniciar sesión';
-            if ( errorID === 'EMAIL_NOT_FOUND') message = 'El email no existe';
-            if ( errorID === 'INVALID_PASSWORD') message = 'La contraseña no es correcta';
+            let message = 'Failed to login';
+            let messageError = '';
+            if (errorID === 'EMAIL_NOT_FOUND') messageError = 'The email doesnt exist';
+            if (errorID === 'INVALID_PASSWORD') messageError = 'The password is incorrect';
 
-            console.log(message)
+            Alert.alert(
+                message,
+                messageError,
+                [{ text: 'OK' }]
+            )
+
+            console.log(message, messageError)
         }
 
         const data = await response.json();

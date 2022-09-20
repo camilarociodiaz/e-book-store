@@ -12,8 +12,8 @@ const ImageSelector = props => {
         const { status } = await ImagePicker.requestCameraPermissionsAsync();
         if (status !== 'granted') {
             Alert.alert(
-                'No tienes permisos para usar la camara',
-                'Necesitas dar permisos para usar la camara',
+                'You do not have permissions to use the camera',
+                'You need to give permissions to use the camera',
                 [{ text: 'Ok' }]
             )
             return false
@@ -27,7 +27,7 @@ const ImageSelector = props => {
 
         const image = await ImagePicker.launchCameraAsync({
             allowsEditing: true,
-            aspect: [16, 9],
+            aspect: [5, 4],
             quality: 0.8
         });
 
@@ -38,14 +38,14 @@ const ImageSelector = props => {
     return (
         <View style={styles.container}>
             <View style={styles.preview}>
-                {!pickedUri ? (<Text>No hay imagen seleccionada</Text>) : (<Image 
+                {!pickedUri ? (<Text>No image selected</Text>) : (<Image 
                     style={styles.image}
                     source={{ uri: pickedUri }}
                     />)}
             </View>
             <Button 
-                title='Tomar foto'
-                color={COLORS.LIGTH_PINK}
+                title='Take picture'
+                color={COLORS.accent}
                 onPress={handlerTakeImage}
             />
         </View>
@@ -54,16 +54,19 @@ const ImageSelector = props => {
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 10
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     preview: {
-        width: '100%',
+        width: '90%',
         height: 200,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
-        borderColor: COLORS.BLUSH,
-        borderWidth: 1
+        borderColor: COLORS.lightGrey,
+        borderWidth: 1,
+        borderRadius: 10,
     },
     image: {
         width: '100%',

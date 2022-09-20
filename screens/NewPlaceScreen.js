@@ -1,4 +1,4 @@
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, ScrollView, StyleSheet, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
 
 import { COLORS } from '../constants/Colors'

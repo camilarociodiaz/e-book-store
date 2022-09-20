@@ -61,7 +61,7 @@ const Input = props => {
         dispatch({ type: INPUT_CHANGE, value: text, isValid: isValid})
     }
 
-    const onBlurHanlder = () => dispatch({ type: INPUT_BLUR})
+    const onBlurHandlder = () => dispatch({ type: INPUT_BLUR})
 
     return (
         <View style={styles.formControl}>
@@ -71,7 +71,7 @@ const Input = props => {
                 style={styles.input}
                 value={inputState.value}
                 onChangeText={textChangeHandler}
-                onBlur={onBlurHanlder}
+                onBlur={onBlurHandlder}
             />
             {!inputState.isValid && inputState.touched && (
                 <View style={styles.errorContainer}>
@@ -84,16 +84,22 @@ const Input = props => {
 
 const styles = StyleSheet.create({
     formControl: {
-        width: '100%'
+        width: '100%',
+        backgroundColor: 'red'
     },
     label: {
         fontFamily: 'SansBold',
-        marginVertical: 8
+        marginVertical: 8,
+        backgroundColor: 'red'
+        
     },
     input: {
         paddingHorizontal: 2,
         paddingVertical: 5,
         borderBottomColor: '#ccc',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        backgroundColor: 'red'
+        
     },
 })
+

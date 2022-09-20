@@ -3,9 +3,8 @@ import { Platform, TouchableOpacity } from 'react-native'
 import { COLORS } from '../constants/Colors'
 import { Ionicons } from '@expo/vector-icons'
 import MapScreen from '../screens/MapScreen'
-// import PlaceDetailScreen from '../screens/PlaceDetailScreen'
 import NewPlaceScreen from '../screens/NewPlaceScreen'
-// screens
+import PlaceDetailScreen from '../screens/PlaceDetailScreen'
 import PlaceListScreen from '../screens/PlaceListScreen'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -41,11 +40,11 @@ const PlaceNavigator = () => (
                 )
             })} 
         />
-        {/* <PlaceStack.Screen
+       <PlaceStack.Screen
             name="Detalle"
             component={PlaceDetailScreen}
             options={{title: 'Detalle direccion'}} 
-        /> */}
+        /> 
         <PlaceStack.Screen
             name="Nuevo"
             component={NewPlaceScreen}

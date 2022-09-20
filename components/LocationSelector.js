@@ -35,8 +35,8 @@ const LocationSelector = ({onLocation, mapLocation}) => {
         const { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
             Alert.alert(
-                'Permisos insuficientes',
-                'Necesitas permisos para usar la localización',
+                'Insufficient permissions',
+                'You need permissions to use location',
                 [{ text: 'OK' }]
             )
             return false;
@@ -63,17 +63,17 @@ const LocationSelector = ({onLocation, mapLocation}) => {
     return (
         <View style={styles.container}>
             <MapPreview location={pickedLocation} style={styles.preview}>
-                <Text>Location in process...</Text>
+                <Text>Location not selected.</Text>
             </MapPreview>
             <View style={styles.actions}>
                 <Button 
-                    title='Obtener location'
-                    color={COLORS.PEACH_PUFF}
+                    title='Get location'
+                    color={COLORS.accent}
                     onPress={handleGetLocation}
                 />
                 <Button
-                    title='Elegir del mapa'
-                    color={COLORS.LIGTH_PINK}
+                    title='Choose from map'
+                    color={COLORS.accent}
                     onPress={handlePickOnMap}
                 />
             </View>
@@ -83,16 +83,19 @@ const LocationSelector = ({onLocation, mapLocation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 10,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     preview: {
-        width: '100%',
+        width: '90%',
         height: 200,
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: COLORS.BLUSH,
-        borderWidth: 1
+        borderColor: COLORS.lightGrey,
+        borderWidth: 1,
+        borderRadius: 10,
     },
     image: {
         width: '100%',
