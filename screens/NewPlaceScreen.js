@@ -1,5 +1,5 @@
-import { Button, ScrollView, StyleSheet, Text, TextInput } from 'react-native'
 import React, { useState } from 'react'
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
 
 import { COLORS } from '../constants/Colors'
 import ImageSelector from '../components/ImageSelector';
@@ -16,20 +16,24 @@ const NewPlaceScreen = ({ navigation, route }) => {
 
     const handleSave = () => {
         dispatch(addPlace(title, image, location));
-        navigation.navigate('Direcciones');
+        navigation.navigate('Sell books');
     }
 
     return (
-        <ScrollView style={{ flex: 1}} scrollEnabled>
-                <Text style={styles.label}>Titulo</Text>
-                <TextInput 
-                    style={styles.input}
-                    value={title}
-                    onChangeText={handleTitleChange}    
-                />
-                <ImageSelector onImage={image => setImage(image)} />
-                <LocationSelector onLocation={setLocation} mapLocation={route?.params?.mapLocation} />
-                <Button title='Grabar Direccion' color={COLORS.MAROON} onPress={handleSave}/>
+        <ScrollView 
+        style={{ flex: 1 }} 
+        scrollEnabled={true} >
+            <Text style={styles.label}>Title</Text>
+            <TextInput
+                style={styles.input}
+                value={title}
+                onChangeText={handleTitleChange}
+            />
+            <ImageSelector onImage={image => setImage(image)} />
+            <LocationSelector onLocation={setLocation} mapLocation={route?.params?.mapLocation} />
+            <TouchableOpacity style={styles.button} onPress={handleSave}>
+                <Text style={styles.textButton}>Record Book </Text>
+            </TouchableOpacity>
         </ScrollView>
     )
 }
@@ -39,15 +43,48 @@ const styles = StyleSheet.create({
         margin: 30,
     },
     label: {
-        fontSize: 18,
-        marginBottom: 16,
+        fontSize: 20,
+        margin: 15,
+        marginBottom: 0,
+        fontFamily: 'SansBold',
     },
     input: {
+        width: '80%',
+        alignSelf: 'center',
         borderBottomColor: '#ccc',
         borderBottomWidth: 1,
-        marginBottom: 16,
-        paddingHorizontal: 2,
+        marginBottom: 20,
         paddingVertical: 4,
+        fontSize: 16,
+        fontFamily: 'SansItalic'
+    },
+    button: {
+        marginTop: 3,
+        backgroundColor: COLORS.greyPrimary,
+        borderRadius: 15,
+        padding: 5,
+        width: '50%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        alignSelf: 'center',
+        shadowColor: COLORS.black,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+        elevation: 2,
+
+    },
+    textButton: {
+        fontSize: 14,
+        fontFamily: 'SansSemiBold',
+        padding: 3,
+        alignSelf: 'center',
+        color: COLORS.black,
     },
 })
 

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { COLORS } from '../constants/Colors';
 import CartNavigator from './CartNavigator'
 import { Entypo } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import OrdersNavigator from './OrdersNavigator';
 import PlaceNavigator from './PlaceNavigator'
 import React from 'react'
@@ -58,13 +59,13 @@ export const TabNavigator = () => {
         }}
       />
       <BottomsTabs.Screen
-            name="Location"
+            name="StoreTab"
             component={PlaceNavigator}
             options={{
                 tabBarIcon: ({focused}) => (
                     <View style={styles.item}>
-                      <Entypo name="location-pin" size={24} color={focused ? COLORS.black : COLORS.greyAccent} />
-                        <Text style={{ color: focused ? 'blue' : 'black'}}>Location</Text>
+                      <Ionicons name="library" size={24} color={focused ? COLORS.black : COLORS.greyAccent} />
+                        <Text style={{  color: focused ? COLORS.black : COLORS.greyAccent}}>Swap books</Text>
                     </View>
                 )
             }}

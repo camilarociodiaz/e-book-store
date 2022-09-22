@@ -1,9 +1,11 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import { COLORS } from '../constants/Colors';
+import { EvilIcons } from '@expo/vector-icons';
+import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 import React from 'react'
 
-const PlaceItem = ({id, title, image, address, onSelect}) => {
+const PlaceItem = ({id, title, image, address, onSelect, onDelete}) => {
     return (
         <TouchableOpacity 
             key={id}
@@ -15,6 +17,9 @@ const PlaceItem = ({id, title, image, address, onSelect}) => {
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.address}>{address}</Text>
         </View>
+        <TouchableOpacity onPress={() => onDelete(id)}>
+            <EvilIcons name="trash" size={24} color={COLORS.greyAccent} />
+          </TouchableOpacity>
     </TouchableOpacity>
     )
 }
@@ -32,7 +37,7 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 35,
-        backgroundColor: COLORS.PEACH_PUFF
+        backgroundColor: COLORS.grey
     },
     info: {
         marginLeft: 25,
@@ -41,13 +46,15 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
     },
     title: {
-        color: 'black',
+        color: COLORS.black,
+        fontFamily: 'SansBold',
         fontSize: 18,
         marginBottom: 6,
     },
     address: {
-        color: 'red',
-        fontSize: 16,
+        color: COLORS.greyAccent,
+        fontFamily: 'SansRegular',
+        fontSize: 15,
     }
 })
 

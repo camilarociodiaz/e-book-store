@@ -11,14 +11,18 @@ const PlaceDetailScreen = ({ route }) => {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
+
+            <Text style={styles.title}> Book's name: {place.title}</Text>
+
             <Image source={{ uri: place.image }} style={styles.image} />
             <View style={styles.location}>
-                <View styles={styles.addressContainer}>
-                    <Text>{place.address}</Text>
-                </View>
+               
                 <MapPreview style={styles.map} location={{ lat: place.lat, lng: place.lng }}>
-                    <Text>Ubicacion no disponible</Text>
+                    <Text>Location not available</Text>
                 </MapPreview>
+                <View>
+                    <Text style={styles.address}> Location: {place.address}</Text>
+                </View>
             </View>
         </ScrollView>
     )
@@ -28,32 +32,35 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
     },
+    title: {
+        fontFamily: 'SansBold',
+        fontSize: 15,
+        padding: 10,
+    },
     image: {
-        height: '35%',
-        minHeight: 300,
-        width: '100%'
+        height: '30%',
+        minHeight: 200,
+        margin: 10,
+        width: '80%',
     },
     location: {
-        margin: 20,
-        width: '90%',
-        maxWidth: 350,
+        width: '80%',
         backgroundColor: 'white',
         shadowColor: "black",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.2,
         shadowRadius: 8,
         elevation: 5,
         borderRadius: 10
     },
-    addressContainer: {
-        padding: 20,
-    },
     address: {
-        color: COLORS.MAROON,
+        color: COLORS.greyAccent,
         textAlign: 'center',
+        padding: 10,
+        fontFamily: 'SansRegular',
     },
     map: {
-        height: 300,
+        height: 250,
     }
 })
 

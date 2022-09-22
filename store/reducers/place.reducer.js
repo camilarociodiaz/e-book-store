@@ -7,7 +7,7 @@ const initialState = {
     places: []
 }
 
-export const PlaceReducer = ( state = initialState, action) => {
+export default ( state = initialState, action) => {
     switch(action.type) {
         case ADD_PLACE:
             const newPlace = { id: action.payload.id.toString(), title: action.payload.title, image: action.payload.image, address: action.payload.address, lat: action.payload.lat, lng: action.payload.lng }
@@ -32,5 +32,3 @@ export const PlaceReducer = ( state = initialState, action) => {
             return state
     }
 }
-
-export default PlaceReducer;

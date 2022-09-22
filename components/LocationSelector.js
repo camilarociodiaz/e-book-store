@@ -1,13 +1,13 @@
 import * as Location from 'expo-location';
 
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { COLORS } from '../constants/Colors';
 import MapPreview from '../components/MapPreview';
 import { useNavigation } from '@react-navigation/native';
 
-const LocationSelector = ({onLocation, mapLocation}) => {
+const LocationSelector = ({ onLocation, mapLocation }) => {
     const [pickedLocation, setPickedLocation] = useState();
     const navigation = useNavigation();
 
@@ -45,7 +45,7 @@ const LocationSelector = ({onLocation, mapLocation}) => {
         return true
     }
 
-    const handlePickOnMap = async() => {
+    const handlePickOnMap = async () => {
         const isLocationOk = await verifyPermissions();
         if (!isLocationOk) {
             return
@@ -54,7 +54,7 @@ const LocationSelector = ({onLocation, mapLocation}) => {
     }
 
     useEffect(() => {
-        if(mapLocation) {
+        if (mapLocation) {
             setPickedLocation(mapLocation)
             onLocation(mapLocation)
         }
@@ -63,19 +63,29 @@ const LocationSelector = ({onLocation, mapLocation}) => {
     return (
         <View style={styles.container}>
             <MapPreview location={pickedLocation} style={styles.preview}>
-                <Text>Location not selected.</Text>
+                <View>
+
+                    <Text>No location selected</Text>
+                    <Image
+                        style={styles.imageContainer}
+                        source={require('../assets/noLocation.png')}
+                    />
+                </View>
             </MapPreview>
             <View style={styles.actions}>
-                <Button 
-                    title='Get location'
-                    color={COLORS.accent}
+                <TouchableOpacity
+                    style={styles.button}
                     onPress={handleGetLocation}
-                />
-                <Button
-                    title='Choose from map'
-                    color={COLORS.accent}
+                >
+                    <Text style={{color: 'white', fontSize: 15, fontFamily: 'SansBold'}}>Get location</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button}
                     onPress={handlePickOnMap}
-                />
+                >
+                    <Text style={{color: 'white', fontSize: 15, fontFamily: 'SansBold'}}>Choose from map</Text>
+                </TouchableOpacity>
+
             </View>
         </View>
     )
@@ -84,26 +94,42 @@ const LocationSelector = ({onLocation, mapLocation}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: 5,
         justifyContent: 'center',
         alignItems: 'center',
     },
     preview: {
-        width: '90%',
-        height: 200,
+        width: '80%',
+        height: 150,
         marginBottom: 10,
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: COLORS.lightGrey,
         borderWidth: 1,
         borderRadius: 10,
+        paddingTop: 5,
     },
     image: {
         width: '100%',
         height: '100%'
     },
     actions: {
+        padding: 5,
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
+    },
+    imageContainer: {
+        marginTop: 10,
+        width: 100,
+        height: 100,
+        alignSelf: 'center'
+    }
+    ,
+    button: {
+        margin: 5,
+        padding: 10,
+        backgroundColor: COLORS.accent,
+        borderRadius: 10,
     }
 })
 

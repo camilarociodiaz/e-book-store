@@ -7,10 +7,5 @@ export const COLORS = {
     black: '#020102',
     greyAccent: '#A0A1A1',
     greyPrimary: '#F2F3F6',
-    DARK_SIENNA: "#450920",
-    MAROON: "#a53860",
-    BLUSH: "#da627d",
-    LIGTH_PINK: "#ffa5ab",
-    PEACH_PUFF: "#f9dbbd",
 
 }

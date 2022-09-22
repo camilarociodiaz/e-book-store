@@ -15,7 +15,7 @@ const MapScreen = ({ navigation }) => {
     }
     const handleSaveLocation = () => {
         if(selectedLocation) {
-            navigation.navigate('Nuevo', { mapLocation: selectedLocation })
+            navigation.navigate('New', { mapLocation: selectedLocation })
         }
     }
 
@@ -30,7 +30,7 @@ const MapScreen = ({ navigation }) => {
         navigation.setOptions({
             headerRight: () => (
                 <TouchableOpacity onPress={() => handleSaveLocation()} hitSlop={{ top: 20, left: 20, right: 20, bottom: 20}} >
-                    <Ionicons name='md-save-outline' color='black' size={22} />
+                    <Ionicons name='md-save-outline' color='white' size={24} />
                 </TouchableOpacity>
         )})
     }, [navigation, handleSaveLocation])
@@ -39,7 +39,7 @@ const MapScreen = ({ navigation }) => {
         <MapPreview initialRegion={initialRegion} style={styles.container} onPress={handleSelectLocation}>
             {selectedLocation && (
                 <Marker
-                    title='Ubicacion seleccionada'
+                    title='Selected location'
                     coordinate={{
                         latitude: selectedLocation.lat,
                         longitude: selectedLocation.lng

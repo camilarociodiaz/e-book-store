@@ -85,7 +85,7 @@ const AuthScreen = () => {
 
             <View style={styles.imageContainer}>
                 <Image
-                    style={styles.stretch}
+                    style={styles.image}
                     source={require('../assets/authIcon.png')}
                 />
             </View>
@@ -145,31 +145,42 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgrounColor: 'white',
     },
- 
+
     prompt: {
         justifyContent: 'space-evenly',
         flexDirection: 'row',
-
+        margin: 30,
     },
     promptButton: {
         fontSize: 18,
         fontFamily: 'SansBold',
         color: COLORS.accent,
-        
-      
+
+
     },
     inputContainer: {
         justifyContent: 'space-around',
-        height: '40%'
+        height: '50%'
     },
     input: {
         width: '100%',
         borderBottomWidth: 1.5,
         borderColor: 'grey',
+        paddingTop: 20,
     },
     imageContainer: {
-        width: 0,
-        height: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
+    image: {
+        width: 250,
+        height: 250,
+
+    },
+    label: {
+        paddingTop: 20,
+     
     }
 })
 
