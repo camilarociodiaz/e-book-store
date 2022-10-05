@@ -36,7 +36,8 @@
     "expo-file-system": "~14.0.0",
     "expo-location": "~14.2.2",
     "react-native-maps": "0.30.2",
-    "expo-sqlite": "~10.2.0"
+    "expo-sqlite": "~10.2.0",
+    "expo-updates": "~0.13.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
