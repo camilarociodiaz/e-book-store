@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     title: {
-        fontFamily: 'SansBold',
-        fontSize: 15,
+        fontFamily: 'SansSemiBold',
+        fontSize: 18,
         padding: 10,
     },
     image: {

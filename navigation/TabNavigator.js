@@ -46,18 +46,7 @@ export const TabNavigator = () => {
             </View>
           )
         }} />
-      <BottomsTabs.Screen
-        name="OrdersTab"
-        component={OrdersNavigator}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View style={styles.item}>
-              <Entypo name="shopping-bag" size={24} color={focused ? COLORS.black : COLORS.greyAccent} />
-              <Text style={{ color: focused ? COLORS.black : COLORS.greyAccent }}>Orders</Text>
-            </View>
-          )
-        }}
-      />
+     
       <BottomsTabs.Screen
             name="StoreTab"
             component={PlaceNavigator}
@@ -70,6 +59,19 @@ export const TabNavigator = () => {
                 )
             }}
         />
+
+<BottomsTabs.Screen
+        name="OrdersTab"
+        component={OrdersNavigator}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.item}>
+              <Entypo name="shopping-bag" size={24} color={focused ? COLORS.black : COLORS.greyAccent} />
+              <Text style={{ color: focused ? COLORS.black : COLORS.greyAccent }}>Orders</Text>
+            </View>
+          )
+        }}
+      />
     </BottomsTabs.Navigator>
   )
 }

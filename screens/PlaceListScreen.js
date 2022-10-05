@@ -5,11 +5,17 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import PlaceItem from '../components/PlaceItems'
+import { removePlace } from '../store/actions/place.actions'
 
 const PlaceListScreen = ({ navigation }) => {
 
     const dispatch = useDispatch();
     const places = useSelector(state => state.places.places)
+
+    const handlerDeleteItem = ({id}) => {
+        dispatch(removePlace(id))
+       console.log('remove item')
+    }
 
     const renderItem = (data) => (
         <PlaceItem
@@ -20,6 +26,7 @@ const PlaceListScreen = ({ navigation }) => {
             onSelect={() => navigation.navigate('Detail', {
                 placeID: data.item.id
             })}
+            onDelete={handlerDeleteItem}
         />
     )
 

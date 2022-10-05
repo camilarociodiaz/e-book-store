@@ -6,6 +6,7 @@ import { API_MAPS_KEY } from '../../constants/DataBase';
 
 export const ADD_PLACE = 'ADD_PLACE'
 export const LOAD_PLACES = 'LOAD_PLACES'
+export const REMOVE_PLACE = 'REMOVE_PLACE';
 
 export const addPlace = (title, image, location) => {
     return async dispatch => {
@@ -63,3 +64,8 @@ export const loadAddress = () => {
         }
     }
 }
+
+export const removePlace = placeID => ({
+    type: REMOVE_PLACE,
+    placeID
+})

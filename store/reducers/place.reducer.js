@@ -1,4 +1,4 @@
-import { ADD_PLACE, LOAD_PLACES } from '../actions/place.actions'
+import { ADD_PLACE, LOAD_PLACES, REMOVE_PLACE } from '../actions/place.actions'
 
 // models
 import Place from '../../models/Place'
@@ -28,7 +28,14 @@ export default ( state = initialState, action) => {
                     }
                 ))
             }
+            case REMOVE_PLACE:
+            const filteredPlace = state.places.filter(item => item.id !== action.placeID);
+            return {
+                ...state,
+                items: filteredPlace,
+            }
         default:
             return state
     }
+    
 }

@@ -1,8 +1,6 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import { COLORS } from '../constants/Colors';
-import { EvilIcons } from '@expo/vector-icons';
-import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 import React from 'react'
 
 const PlaceItem = ({id, title, image, address, onSelect, onDelete}) => {
@@ -17,9 +15,6 @@ const PlaceItem = ({id, title, image, address, onSelect, onDelete}) => {
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.address}>{address}</Text>
         </View>
-        <TouchableOpacity onPress={() => onDelete(id)}>
-            <EvilIcons name="trash" size={24} color={COLORS.greyAccent} />
-          </TouchableOpacity>
     </TouchableOpacity>
     )
 }
