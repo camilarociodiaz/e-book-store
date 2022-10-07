@@ -1,10 +1,13 @@
 {
   "expo": {
-    "name": "e-book-store",
-    "slug": "e-book-store",
+    "name": "ebook-store",
+    "slug": "ebook-store",
     "version": "1.0.0",
     "orientation": "portrait",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "icon": "./assets/logo-app.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -35,8 +38,18 @@
         "WRITE_EXTERNAL_STORAGE"
       ]
     },
+    "config": {
+      "googleMaps": {
+        "apiKey": "AIzaSyCyGeQ0XUgO6II5VMqUxQaBt3JjZQN480A"
+      }
+    },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ba513d59-a790-411e-9ece-34b560e2a7bb"
+      }
     }
   }
 }
