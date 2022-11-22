@@ -11,11 +11,11 @@ export const formReducer = (state, action) => {
     if (action.type === FORM_INPUT_UPDATE) {
         const inputValues = {
             ...state.inputValues,
-            [action.input]: action.value
+            [action.input]: action.value,
         }
         const inputValidities = {
             ...state.inputValidities,
-            [action.input]: action.isValid
+            [action.input]: action.isValid,
         }
         let formIsValid = true;
 
@@ -26,11 +26,11 @@ export const formReducer = (state, action) => {
         return {
             formIsValid,
             inputValues,
-            inputValidities
+            inputValidities,
         }
     }
-    return state
-}
+    return state;
+};
 
 
 const AuthScreen = () => {
@@ -46,25 +46,25 @@ const AuthScreen = () => {
         },
         inputValidities: {
             email: false,
-            password: false
+            password: false,
         },
-        formIsValid: false
-    })
+        formIsValid: false,
+    });
 
 
     const title = 'Create your ebook store account',
-        messageAction = 'Sign in',
+        messageAction = 'Sign up',
         messageTarget = 'Login';
 
     const handleSignUp = () => {
         if (formState.formIsValid) {
-            dispatch(signup(formState.inputValues.email, formState.inputValues.password));
+            dispatch(signup(formState.inputValues.email,formState.inputValues.password));
         } else {
             Alert.alert(
                 'Invalid form',
                 'Enter email and valid username',
                 [{ text: 'OK' }]
-            )
+            );
         }
     }
 
@@ -73,8 +73,8 @@ const AuthScreen = () => {
             type: FORM_INPUT_UPDATE,
             value: inputValue,
             isValid: inputValidity,
-            input: inputIdentifier
-        })
+            input: inputIdentifier,
+        });
     }, [formDispatch])
 
     return (
