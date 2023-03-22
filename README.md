@@ -27,3 +27,4 @@ Start the server
  
 <h2> 🛠 Skills</h2> 
 React Native
+Firebase
